@@ -8,5 +8,6 @@
 </head>
 <body>
 ${test}
+${hm.test}
 </body>
 </html>
