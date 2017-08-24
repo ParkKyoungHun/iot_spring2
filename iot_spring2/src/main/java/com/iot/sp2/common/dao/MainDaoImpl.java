@@ -6,7 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Service;
 
-import com.iot.sp2.user.dto.User;
+import com.iot.sp2.user.dto.UserInfo;
 
 @Service
 public  class MainDaoImpl extends SqlSessionDaoSupport implements MainDao{
@@ -20,7 +20,7 @@ public  class MainDaoImpl extends SqlSessionDaoSupport implements MainDao{
 		return getSqlSession().insert("main.writeProc",paramMap );
 	}
 	
-	public int writeProc2(User board) {
+	public int writeProc2(UserInfo board) {
 		return getSqlSession().insert("main.writeProc2",board);
 	}
 	
@@ -28,8 +28,8 @@ public  class MainDaoImpl extends SqlSessionDaoSupport implements MainDao{
 		return getSqlSession().selectList(sqlId);
 	}
 	
-	public User getUserPwd(Map<String, Object> paramMap) {
-		return (User)getSqlSession().selectOne("main.USER_PWD_OBJECT",paramMap);
+	public UserInfo getUserPwd(Map<String, Object> paramMap) {
+		return (UserInfo)getSqlSession().selectOne("main.USER_PWD_OBJECT",paramMap);
 	}
 	
 	public Object getObject(String sqlId, Map paramMap){

@@ -12,19 +12,19 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.iot.sp2.user.dto.User;
+import com.iot.sp2.user.dto.UserInfo;
 import com.iot.sp2.user.service.UserService;
 
 @Controller
+@RequestMapping("/user")
 public class UserController { 
 
 	@Autowired
 	private UserService us; 
 	
-	@RequestMapping("/user/main")
+	@RequestMapping("/main")
 	public String init(HttpServletRequest request, ModelMap model, HttpSession hs) {
 		String id = (String)hs.getAttribute("ID");
 		if(id!=null){
@@ -32,29 +32,12 @@ public class UserController {
 			return "/user/main";
 		}else{
 			return "/user/login";
-		}
+		} 
 	}
 
-	@RequestMapping(value="/user/test", method=RequestMethod.GET)
-	public @ResponseBody Map loginTest(HttpServletRequest request, @RequestParam Map pm,ModelMap model,HttpSession hs) {
-		User user = us.getUserPwd(pm);
-		String url = "";
-		if(user==null){
-			model.put("data", "F");
-			model.put("url", "/user/login");
-			model.put("msg", "Login Fail");
-		}else{
-			hs.setAttribute("ID", user.getUserId());
-			model.put("data", "S");
-			model.put("url", "/user/main");
-			model.put("msg", "Login Success");
-		}
-		return model;
-	}
-	@RequestMapping(value="/user/loginaction", method=RequestMethod.POST)
-	public @ResponseBody Map login(HttpServletRequest request, @RequestBody Map pm,ModelMap model,HttpSession hs) {
-		User user = us.getUserPwd(pm);
-		String url = "";
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public @ResponseBody ModelMap loginTest(HttpServletRequest request, @RequestBody UserInfo pUser,ModelMap model,HttpSession hs) {
+		UserInfo user = us.getUser(pUser);
 		if(user==null){
 			model.put("data", "F");
 			model.put("url", "/user/login");

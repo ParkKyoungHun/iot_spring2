@@ -8,7 +8,5 @@ public class Exam {
 		
 	}
 	public static void main(String[] args){
-		BasicDataSource dataSourceSpied = new BasicDataSource();
-		Exam e = new Exam(dataSourceSpied);
 	}
 }

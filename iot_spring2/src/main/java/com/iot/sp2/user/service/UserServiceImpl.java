@@ -7,29 +7,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iot.sp2.common.dao.MainDao;
-import com.iot.sp2.user.dto.User;
+import com.iot.sp2.user.dao.UserDao;
+import com.iot.sp2.user.dto.UserInfo;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private MainDao mainDao;
+	@Autowired
+	private UserDao userDao;
 	
-	public User getUserPwd(Map pm) {
-		String sqlId = "user.USER_PWD_OBJECT";
-		User user = (User) mainDao.getObject(sqlId, pm);
+	public UserInfo getUserPwd(Map pm) {
+		String sqlId = "userinfo.SELECT_USER";
+		UserInfo user = (UserInfo) mainDao.getObject(sqlId, pm);
 		boolean checkPwd = checkPwd(pm, user);
 		if(!checkPwd){
 			return null;
 		}
 		return user;
 	}
+
 	
-	public boolean checkPwd(Map pm, User ud){
+	public UserInfo getUser(UserInfo pUser) {
+		UserInfo user = (UserInfo) userDao.selectUser(pUser);
+		if(user!=null && user.getUserPwd().equals(pUser.getUserPwd())){
+			return user;
+		}
+		return null;
+	}
+	public boolean checkPwd(Map pm, UserInfo ud){
 		if(ud==null){
 			return false;
 		}
-		String userPwd = (String)pm.get("userpwd");
+		String userPwd = (String)pm.get("userPwd");
 		String checkPwd = ud.getUserPwd();
 		
 		if(userPwd.equals(checkPwd)){

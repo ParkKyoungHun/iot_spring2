@@ -13,21 +13,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/test")
 public class TestController {
 	
-	@RequestMapping("/1")
-	public String test(HttpServletRequest request, Model map){
-		String test = request.getParameter("test");
-		map.addAttribute("test",test);
-		HashMap<String, String> hm = new HashMap<String, String>();
-		hm.put("test", "이렇게");
-		map.addAttribute("hm",hm);
-		return "test";
+	@RequestMapping("/list")
+	public String list(HttpServletRequest request, Model map){;
+		return "test/list";
 	}
 
-	@RequestMapping("/2")
-	public String test2(HttpServletRequest request, @RequestParam(value="ttt",required=false) String ttt){
-		System.out.println(ttt);
-		String test = request.getParameter("test");
-		System.out.println(test);
-		return "test";
+	@RequestMapping("/write")
+	public String write(HttpServletRequest request, Model map){
+		return "test/write";
+	}
+
+	@RequestMapping("/modify")
+	public String modify(HttpServletRequest request, Model map){
+		return "test/write";
+	}
+
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, Model map){
+		return "test/delete";
 	}
 }

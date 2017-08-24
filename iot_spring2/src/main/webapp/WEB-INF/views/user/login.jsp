@@ -32,7 +32,7 @@
 		param = JSON.stringify(param);
 		var a = { 
 		        type     : "POST"
-		    	    ,   url      : "/user/login_ok.jsp"
+		    	    ,   url      : "${pageContext.request.contextPath}/user/login"
 		    	    ,   dataType : "json" 
 		    	    ,   beforeSend: function(xhr) {
 		    	        xhr.setRequestHeader("Accept", "application/json");
@@ -41,8 +41,8 @@
 		    	    ,   data     : param
 		    	    ,   success : function(result){
 		    	    	alert(result.msg);
-		    	    	if(result.login=="ok"){
-		    	    		location.href = "${pageContext.request.contextPath}/main.jsp";
+		    	    	if(result.data=="S"){
+		    	    		location.href = "${pageContext.request.contextPath}/user/main";
 		    	    	}else{
 		    	    		$("#id").val("");
 		    	    		$("#pwd").val("");
