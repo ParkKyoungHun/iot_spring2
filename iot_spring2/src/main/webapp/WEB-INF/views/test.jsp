@@ -9,5 +9,9 @@
 <body>
 ${test}
 ${hm.test}
+<form action="/sp/user/test">
+<input type="text" name="test">
+<input type="submit">
+</form>
 </body>
 </html>

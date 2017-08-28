@@ -7,4 +7,5 @@ import com.iot.sp2.user.dto.UserInfo;
 
 public interface UserService {
 	public UserInfo getUser(UserInfo pUser);
+	public List<UserInfo> getUserList(Map hm);
 }

@@ -1,18 +1,19 @@
 package com.iot.sp2.test;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.iot.sp2.user.service.UserService;
+import com.iot.sp2.user.service.UserServiceImpl;
 
 @Controller
 @RequestMapping("/test")
 public class TestController {
 	
+	private static UserService us = new UserServiceImpl();
 	@RequestMapping("/list")
 	public String list(HttpServletRequest request, Model map){;
 		return "test/list";
