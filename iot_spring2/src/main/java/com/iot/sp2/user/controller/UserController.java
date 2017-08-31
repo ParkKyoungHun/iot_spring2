@@ -22,12 +22,10 @@ import com.iot.sp2.user.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("id")
 public class UserController { 
 
 	@Autowired
 	private UserService us;
-
 	
 	@RequestMapping("/main")
 	public String init(HttpServletRequest request, ModelMap model, HttpSession hs) {
