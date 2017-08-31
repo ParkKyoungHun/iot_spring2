@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui/signin.css" />
+<link rel="stylesheet" href="${rootPath}/resources/ui/signin.css" />
 <body>
 	<div class="container">
 		<form class="form-signin">
@@ -33,7 +33,7 @@
 		param = JSON.stringify(param);
 		var a = { 
 		        type     : "POST"
-		    	    ,   url      : "${pageContext.request.contextPath}/user/login"
+		    	    ,   url      : "${rootPath}/user/login"
 		    	    ,   dataType : "json" 
 		    	    ,   beforeSend: function(xhr) {
 		    	        xhr.setRequestHeader("Accept", "application/json");
@@ -43,7 +43,7 @@
 		    	    ,   success : function(result){
 		    	    	alert(result.msg);
 		    	    	if(result.data=="S"){
-		    	    		location.href = "${pageContext.request.contextPath}/user/main";
+		    	    		location.href = "${rootPath}/user/main";
 		    	    	}else{
 		    	    		$("#id").val("");
 		    	    		$("#pwd").val("");

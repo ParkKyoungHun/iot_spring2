@@ -6,11 +6,10 @@
 <script>
 	$(document).ready(function(){
 		var param = {};
-		param["userName"] = "김경훈";
 		param = JSON.stringify(param);
 		var a = { 
 		        type     : "POST"
-		    	    ,   url      : "${pageContext.request.contextPath}/user/list"
+		    	    ,   url      : "${rootPath}/user/list"
 		    	    ,   dataType : "json" 
 		    	    ,   beforeSend: function(xhr) {
 		    	        xhr.setRequestHeader("Accept", "application/json");
