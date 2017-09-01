@@ -61,7 +61,7 @@ function alertOp(){
             <li><a href="/board/board_select.jsp">게시판가기</a></li>
             <li><a href="/user/user_info.jsp">유저정보가기</a></li>
             <li><a href="/role/role_select.jsp">권한정보가기</a></li>
-            <li><a href="/user/logout_ok.jsp">로그아웃</a></li>
+            <li><a href="/user/logout">로그아웃</a></li>
           </ul>
           
         </div><!--/.nav-collapse -->
