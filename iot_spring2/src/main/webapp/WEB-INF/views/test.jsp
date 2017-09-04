@@ -4,13 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${title}</title>
 </head>
 <body>
-${test}
-${hm.test}
-<form action="/sp/user/test">
-<input type="text" name="test">
+<form action="test/test1" method="get">
+<input type="text" name="exam">
+<input type="submit">
+</form>
+<form action="/test/test1" method="post">
+<input type="text" name="exam">
+<input type="submit">
+</form>
+
+<form action="/test/t" method="post">
+<input type="text" name="exam">
 <input type="submit">
 </form>
 </body>
